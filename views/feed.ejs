@@ -1,0 +1,155 @@
+<%- include('./partials/header.ejs') %>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+       .container {
+       margin: auto;
+    }
+
+    .content-wrapper {
+        width: calc(14.28% - 20px); 
+        position: relative;
+    }
+
+    .column {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .image-wrapper {
+        overflow: hidden;
+        position: relative;
+        border-radius: 16px;
+    }
+
+    .overlay {
+        cursor: zoom-in;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 16px;
+        padding: 10px;
+        color: white;
+        opacity: 0;
+    }
+
+    .overlay:hover {
+        opacity: 1;
+    }
+
+    .overlay div {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .round-button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        opacity: 0.8;
+    }
+
+    .round-button img {
+        width: 60%;
+        height: 60%;
+    }
+
+    .spheric-button {
+        border-radius: 50px;
+        border: none;
+        padding: 0.5em 1.25em;
+        opacity: 0.8;
+        font-weight: 800;
+    }
+
+    .spheric-button:hover,
+    .round-button:hover {
+        opacity: 1;
+        cursor: pointer;
+    }
+
+    .save {
+        padding: 1em 1.5em;
+        border: none;
+        border-radius: 50px;
+        color: white;
+        font-weight: 900;
+        cursor: pointer;
+        background-color: var(--red);
+    }
+
+    .save:hover {
+        background-color: #ad081b;
+    }
+
+    img {
+        border-radius: 16px;
+        width: 100%;
+        height: 40vh;
+        object-fit: cover;
+        transition: filter 0.3s ease;
+    }
+
+    img:hover {
+        filter: brightness(0.7);
+        cursor: pointer;
+    }
+
+    @media (max-width: 800px) {
+        .content-wrapper {
+            width: calc(50% - 1em);
+        }
+    }
+
+    @media (max-width: 550px) {
+        .content-wrapper {
+            width: calc(100% - 1em);
+        }
+    }
+</style>
+<div class="container">
+    <div class="column">
+        <% posts.forEach(post => { %>
+            <div class="content-wrapper">
+                <div class="image-wrapper">
+                    <div class="overlay">
+                        <div>
+                            <p class="text-white"> @<%= post.user.username %></p>
+                            <button class="save">Save</button>
+                        </div>
+                        <div>
+                            <button class="spheric-button">
+                                twitter.com
+                            </button>
+                            <button class="round-button">
+                                <img src="https://cdn-icons-png.flaticon.com/512/3580/3580382.png" alt="">
+                            </button>
+                            <button class="round-button">
+                                <img src="https://cdn-icons-png.flaticon.com/512/512/512142.png" alt="">
+                            </button>
+                        </div>
+                    </div>
+                    <img src="/images/uploads/<%= post.image %>" alt="pins">
+                </div>
+                <div class="">
+                    <p ><%= post.title %></p>
+                    
+                </div>
+            </div>
+        <% }); %>
+    </div>
+</div>
+
+
+
+<%- include('./partials/footer.ejs') %>

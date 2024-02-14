@@ -1,0 +1,79 @@
+<%- include('./partials/header.ejs') %>
+<style>
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+        align-content: flex-start; 
+        padding: 10px;
+    }
+
+    .box {
+        flex: 1 1 300px;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+
+    .box>img {
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="profile w-full min-h-screen bg-zinc-100 pt-1 mt-[-8vh]">    
+    <form id="form" hidden action="/uploads" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" id="fileInput">
+    </form>
+
+    <div class="profileDetails flex items-center flex-col gap-4">
+        <div id="fileSelected"></div>
+        <div class="w-32 h-32 bg-zinc-200 rounded-full mt-20 overflow-hidden relative">
+            <% if (user && user.profileImage) { %>
+                <img id="uploads" class="cursor-pointer h-full w-full object-cover bg-bottom"
+                    src="/images/uploads/<%= user.profileImage %>" alt="profile Image">
+            <% } else { %>
+                <img id="uploads" class="cursor-pointer h-full w-full object-cover bg-bottom"
+                    src="https://i.pinimg.com/236x/a6/cc/73/a6cc73660d83e876dfa3839d5f60e52d.jpg" alt="Default Image">
+            <% } %>
+        </div>
+
+        <h1 class="text-4xl font-medium text-center"><%= user.fullname %></h1>
+        <h3 class="text-md text-zinc-600 text-center"><i class="ri-pinterest-fill"></i><%= user.username %></h3>
+
+        <div class="flex gap-4">
+            <a href="/edit" class="px-7 py-3 bg-zinc-300 rounded-full text-sm font-semibold w-content">Edit Profile</a>
+            <a href="/createpin"
+                class="px-7 py-3 bg-red-600 rounded-full text-sm font-semibold w-content text-white ">Create Pin</a>
+        </div>
+        <div class="flex items-center justify-center gap-3 ">
+            <a class="text-xl font-semi-bold block">Your Total Uploaded Pins:</a>
+            <h5 class="text-xl font-medium"><%= user.posts.length %> Pins</h5>
+        </div>
+        <div class="container mt-10">
+            <% user.posts.forEach(post => { %>
+                    <div class="box">
+                        <img src="/images/uploads/<%= post.image %>" alt="pins">
+                        <h3 class="mt-2 text-md font-medium"><%= post.title %></h3>
+                    </div>
+
+            <% }); %>
+        </div>
+</div>
+
+<script>
+    document.querySelector("#uploads").addEventListener("click", function () {
+        document.querySelector("#fileInput").click();
+    });
+
+    document.querySelector("#fileInput").addEventListener("change", function () {
+        const fileName = this.files[0].name;
+        document.querySelector("#fileSelected").innerText = fileName;
+        document.querySelector("#form").submit();
+    });
+</script>
+
+
+<%- include('./partials/footer.ejs') %>

@@ -1,0 +1,65 @@
+<%- include('./partials/header.ejs') %>
+
+
+    <div class="bg-zinc-500 w-full h-screen flex items-center justify-center relative">
+        <div
+            class="h-fit w-[500px] bg-zinc-100 rounded-[30px] border-[1px] border-zinc-900 px-[100px] py-[50px] relative">
+            <button class="absolute top-0 right-0 h-24 w-24 text-3xl scale-95 text-zinc-900 scale-[1.]"
+                onclick="this.parentElement.style.display='none';">×</button>
+
+            <img class="h-9 m-auto mb-6 " src="https://www.freepnglogos.com/uploads/pinterest-logo-p-png-0.png"
+                alt="logo">
+            <h1 class="text-[30px] text-center font-medium text-zinc-700">Welcome to Pinterest</h1>
+            <!-- <h3 class="text-[15px] text-center mt-2 mb-4 font-small text-slate-800">Last time you logged in using
+                Google</h3> -->
+            <form class="mt-3" action="/login" method="post">
+                
+                <!-- <label for="emailInput">Email</label>
+                <input class="block w-full px-3 py-3 mt-2 border-[1px] border-zinc-300 rounded-[10px]" type="text"
+                    name="email" placeholder="Email" id="emailInput"> -->
+                <label for="username">Username</label>
+                <input class="block w-full px-3 py-3 mt-2 border-[1px] border-zinc-300 rounded-[10px]" type="text"
+                    name="username" placeholder="Username" id="username">
+
+                <label for="passwordInput" class="mt-2 relative">Password
+                    <input class="mt-2 block w-full px-3 py-3 pr-10 border-[1px] border-zinc-300 rounded-[10px]"
+                        type="password" name="password" placeholder="Password" id="passwordInput">
+                    <i id="togglePassword" class="ri-eye-fill absolute right-9 top-[55%] cursor-pointer text-zinc-900"
+                        onclick="togglePasswordVisibility(event, 'passwordInput', 'togglePassword')"></i>
+                </label>
+                <% if (messages && messages.length > 0) { %>
+                    <p class="text-red-500 text-center"><%= messages[0] %></p>
+                  <% } %>
+                <input class="cursor-pointer block w-full px-3 py-2 mt-5 bg-red-600 text-white rounded-full font-bold"
+                    type="submit" value="Login">
+            </form>
+            <h2 class="text-center m-2 font-bold">OR</h2>
+            <div class="relative">
+                <input class="block w-full px-3 py-2 pl-10 bg-blue-600 text-white rounded-full font-bold cursor-pointer"
+                    type="submit" value="Continue with Facebook">
+                <i class="ri-facebook-circle-fill absolute left-5 top-2 text-white scale-[1.5]"></i>
+            </div>
+
+            <p class="text-[11px] text-center leading-5 mt-3">By continuing, you agree to Pinterest's <br> <span
+                    class="text-zinc-900 font-bold">Terms of Service</span> Opens a new tab and acknowledge you've read
+                our <span class="text-zinc-900 font-bold">Privacy Policy. Notice at collection</span></p>
+            <hr class="w-[40%] h-[2px] bg-zinc-300 m-auto mt-3">
+            <p class="text-zinc-900 font-bold text-[11px] text-center leading-5 mt-3">Not on Pinterest yet? <a
+                    href="/register">Sign up</a></p>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility(event, passwordId, iconId) {
+            event.preventDefault();
+            const passwordInput = document.getElementById(passwordId);
+            const togglePassword = document.getElementById(iconId);
+
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePassword.classList.toggle('ri-eye-fill');
+            togglePassword.classList.toggle('ri-eye-off-fill');
+        }
+    </script>
+
+<%- include('./partials/footer.ejs') %>

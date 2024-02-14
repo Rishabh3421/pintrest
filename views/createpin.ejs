@@ -1,0 +1,146 @@
+<%- include('./partials/header.ejs') %>
+
+<style>
+  #title {
+    height: 8vh;
+    outline: 1px solid rgba(0, 0, 0, 0.25);
+    margin-top: 3px;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  #title > h1 {
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .left > button {
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 500;
+  }
+
+  form {
+    /* height: 80vh; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 5vh;
+    flex-wrap: wrap;
+  }
+
+  .left-form {
+    margin-right: 20px;
+  }
+
+  .right-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .right-form > label,
+  .right-form > input,
+  .right-form > textarea,
+  .right-form > input[type="submit"] {
+    margin-bottom: 10px;
+  }
+
+  .right-form > label {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .right-form > input,
+  .right-form > textarea {
+    outline: 1px solid rgba(0, 0, 0, 0.426);
+    padding: 10px;
+    width: 30vw;
+    border-radius: 10px;
+  }
+
+  .right-form > input[type="submit"] {
+    background-color: #EF4444;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .imagePost {
+    display: none; 
+  }
+
+  .left-form {
+    margin-right: 50px;
+    
+  }
+
+  .drag-drop-container {
+    border: 1px dashed #ccc;
+    padding: 200px 80px;
+    text-align: center;
+    cursor: pointer;
+    background: #E9E9E9;
+    border-radius: 20px;
+  }
+
+  .drag-drop-container:hover {
+    border-color: #333;
+  }
+
+  .drag-drop-message {
+    font-weight: 400;
+    color: #000;
+  }
+
+  .drag-drop-message strong {
+    color: #333;
+  }
+
+
+</style>
+
+<div id="title">
+  <h1>Create Pin</h1>
+  <div class="left">
+    <h4>Changes Stored!</h4>
+    <input class="block px-3 py-2 rounded-full mt-5 m-2 bg-red-500 text-white" type="submit" value="Publish">
+  </div>
+</div>
+
+<form action="/createpost" method="post" enctype="multipart/form-data" class="form">
+    <div class="left-form">
+      <div class="drag-drop-container" onclick="document.getElementById('fileInput').click()">
+        <i class="ri-arrow-up-circle-fill text-4xl"></i>
+        <div class="drag-drop-message">Choose a file or drag and drop<br>it here</div>
+      </div>      
+        <input type="file" name="postImage" id="fileInput" class="imagePost" onchange="displayImagePreview(this)">
+        <div id="imagePreview" class="image-preview"></div>
+      </div>
+      
+      
+  <div class="right-form">
+    <label for="title">Title</label>
+    <input type="text" placeholder="Add a Title" name="title" id="input-title">
+    <label for="description">Description</label>
+    <textarea type="text" placeholder="Add a detailed Description" style="resize: none;" name="description" id="description"></textarea>
+    <input class="block px-3 py-2 rounded-full mt-5 m-2 bg-red-500 text-white" type="submit" value="Publish">
+</div>
+</form>
+
+
+
+
+  
+  
+<%- include('./partials/footer.ejs') %>
