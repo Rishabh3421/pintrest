@@ -52,7 +52,7 @@ router.get('/', function(req, res) {
 });
 
 router.get('/home', function(req, res) {
-  res.render('home', { messages: req.flash('error'), nav:false });
+  res.render('home', { messages: req.flash('error'), nav:true });
 });
 
 router.get('/createpin', isLoggedIn, async function(req, res) {

@@ -1,6 +1,317 @@
 <%- include('./partials/header.ejs') %>
+    <style>
+        body {
+            overflow: hidden;
+            scroll-behavior: smooth;
+          
+        }
+
+        #page1 {
+            height: 100vh;
+            background: #FFFD92;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+
+        #page2 {
+            height: 100vh;
+            background: #DAFFF6;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #page3 {
+            height: 100vh;
+            background: #DAFFF6;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #page4 {
+            height: 100vh;
+            background: #DAFFF6;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #left {
+            height: 100%;
+            width: 50%;
+            position: relative;
+        }
+
+        #left>img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 37vw;
+        }
+        #page2>#left>img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 40vw;
+        }
+        #page3>#left>img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        #right {
+            height: 100%;
+            width: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #right>h1 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: normal;
+            color: rgb(195, 25, 82);
+        }
+
+        #right>p {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: normal;
+            color: rgb(195, 25, 82);
+            text-align: center;
+            width: 43%;
+            margin: 2vh;
+        }
+
+        #right>a {
+            color: #fff;
+            padding: 10px 20px;
+            background: rgb(206, 1, 1);
+            border-radius: 20px;
+        }
+        #page2>#right>h1 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: normal;
+            color: #006B6C;
+        }
+
+        #page2>#right>p {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: normal;
+            color: #006B6C;
+            text-align: center;
+            width: 43%;
+            margin: 2vh;
+        }
+
+        #page2>#right>a {
+            color: #fff;
+            padding: 10px 20px;
+            background: rgb(206, 1, 1);
+            border-radius: 20px;
+        }
+        #page3>#right {
+            height: 100%;
+            width: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #FFE2EB;
+            text-align: center;
+        }
+        #page3>#right>h1 {
+            font-size: 60px;
+            font-weight: 700;
+            line-height: normal;
+            color: rgb(195, 25, 82);
+
+        }
+
+        #page3>#right>p {
+            font-size: 24px;
+            font-weight: 400;
+            line-height: normal;
+            color: rgb(195, 25, 82);
+            text-align: center;
+            width: 45%;
+            margin: 2vh;
+        }
+
+        #page3>#right>a {
+            color: #fff;
+            padding: 10px 20px;
+            background: rgb(206, 1, 1);
+            border-radius: 20px;
+        }
+        #page4{
+            background-image: url("https://images.unsplash.com/photo-1684741891614-c244b9df0613?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            
+        }
+        #page4>#overlay>#right>h1 {
+            font-size: 70px;
+            font-weight: 600;
+            line-height: normal;
+            color: #fff;
+
+        }
+        #page4>#overlay{
+            height: 100%;
+            width: 100%;
+            background: #0000006c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #page4>#overlay>#left>.form{
+            position: absolute;
+            top: 10%;
+            right: 20%;
+        }
+        
+            
+    </style>
+
+<div id="main">
+    <div id="page1" class="page"
+        <div id="left">
+            <img src="images/uploads/homepageimg/pintrest.png" alt="">
+            <div id="right">
+                <h1>Search for an idea</h1>
+                <p>What do you want to try next? Think of something you’re into—like “easy chicken dinner”—and see what you find.</p>
+                <a href="/feed">Explore</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="page2" class="page">
+        <div id="right">
+            <h1>Save ideas you like</h1>
+            <p>Collect your favorites so you can get back to them later.</p>
+            <a href="/feed">Explore</a>
+        </div>
+        <div id="left">
+            <img src="images/uploads/homepageimg/pintrest2.png" alt="">
+        </div>
+    </div>
+
+    <div id="page3" class="page">
+        <div id="left">
+            <img src="images/uploads/homepageimg/pintrest3.png" alt="">
+        </div>
+        <div id="right">
+            <h1>See it, make it,<br> try it, do it</h1>
+            <p>The best part of Pinterest is discovering new things and ideas from people around the world.</p>
+            <a href="/feed">Explore</a>
+        </div>
+    </div>
+
+    <div id="page4" class="page">
+        <div id="overlay">
+             <div id="right">
+            <h1>Sign up to <br> get your <br> ideas</h1>
+        </div>
+        <div id="left">
+                <div class="form h-fit w-[500px] bg-white rounded-[30px] border-[1px] border-zinc-900 px-[100px] py-[50px] relative">
+                    <!-- <button class="absolute top-0 right-0 h-24 w-24 text-3xl scale-95 text-zinc-900 scale-[1.]"
+                        onclick="this.parentElement.style.display='none';">×</button> -->
+                    <img class="h-9 m-auto mb-6 "
+                        src="https://www.freepnglogos.com/uploads/pinterest-logo-p-png-0.png" alt="logo">
+                    <h1 class="text-[30px] text-center font-medium text-zinc-700">Welcome to Pinterest</h1>
+                    <h3 class="text-[15px] text-center mt-2 mb-4 font-small text-slate-800">Find new ideas to try</h3>
+                    <form class="mt-3" action="/register" method="post">
+                        <label  for="UsernameInput">Username</label>
+                        <input class="block w-full px-3 py-3 mt-2 border-[1px] border-zinc-300 rounded-[10px]" type="text"
+                            name="username" placeholder="Username" id="UsernameInput">
+                        <label  for="UsernameInput">Full Name</label>
+                        <input class="block w-full px-3 py-3 mt-2 border-[1px] border-zinc-300 rounded-[10px]" type="text"
+                            name="fullname" placeholder="Enter you Full Name" id="fullNameInput">
+                        <label  for="emailInput">Email</label>
+                        <input class="block w-full px-3 py-3 mt-2 border-[1px] border-zinc-300 rounded-[10px]" type="text"
+                            name="email" placeholder="Email" id="emailInput">
+        
+                        <label for="passwordInput" class="mt-2 relative">Password
+                            <input class="mt-2 block w-full px-3 py-3 pr-10 border-[1px] border-zinc-300 rounded-[10px]"
+                                type="password" name="password" placeholder="Create a password" id="passwordInput">
+                            <i id="togglePassword"
+                                class="ri-eye-fill absolute left-[240px] top-[55%] cursor-pointer text-zinc-900"
+                                onclick="togglePasswordVisibility(event, 'passwordInput', 'togglePassword')"></i>
+                        </label>
+        
+                        <input class="cursor-pointer block w-full px-3 py-2 mt-5 bg-red-600 text-white rounded-full font-bold" type="submit"
+                            value="Continue">
+                    </form>
+                    <h2 class="text-center m-2 font-bold">OR</h2>
+                    <div class="relative">
+                        <input class="block w-full px-3 py-2 pl-10 bg-blue-600 text-white rounded-full font-bold cursor-pointer" type="submit"
+                            value="Continue with Facebook">
+                        <i class="ri-facebook-circle-fill absolute left-5 top-2 text-white scale-[1.5]"></i>
+                    </div>
+        
+                    <p class="text-[11px] text-center leading-5 mt-3">By continuing, you agree to Pinterest's <br> <span
+                            class="text-zinc-900 font-bold">Terms of Service</span> Opens a new tab and acknowledge you've read
+                        our <span class="text-zinc-900 font-bold">Privacy Policy. Notice at collection</span></p>
+                    <hr class="w-[40%] h-[2px] bg-zinc-300 m-auto mt-3">
+                    <p class="text-zinc-900 text-[11px] text-center leading-5 mt-3">Already a member? <a class="font-bold" href="/">Login</a></p>
+                </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(function () {
+        var divs = $('.page');
+        var div = 0;
+        div = -1;
+        divs.each(function (i) {
+            if (div < 0 && ($(this).offset().top >= $(window).scrollTop())) {
+                div = i;
+            }
+        });
+
+        $(window).on('mousewheel DOMMouseScroll', function (e) {
+            if (e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
+                if (div > 0) {
+                    div--;
+                }
+            } else {
+                if (div < divs.length - 1) {
+                    div++;
+                }
+            }
+            $('html,body').stop().animate({
+                scrollTop: divs.eq(div).offset().top
+            }, 500);
+            return false;
+        });
+
+        $(window).resize(function () {
+            $('html,body').scrollTop(divs.eq(div).offset().top);
+        });
+    });
+</script>
 
 
-
-<%- include('./partials/footer.ejs') %>
-
+    <%- include('./partials/footer.ejs') %>
