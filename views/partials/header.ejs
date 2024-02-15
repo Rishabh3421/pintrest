@@ -6,73 +6,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinterest - India</title>
     <link rel="shortcut icon" href="https://static-00.iconduck.com/assets.00/pinterest-icon-497x512-g88cs2uz.png" type="image/x-icon">
-    <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-        rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
+
 <body>
-  <% if(nav === true){ %>
+    <% if(nav === true){ %>
     <div class="header" id="nav">
-      <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/pinterest-round-color-icon.png" class="icon pinterest-icon">
-      <ul class="navigation">
-        <a href="/feed"><li>Home</li></a>
-       <a href="/feed"><li>Explore</li></a>
-        <a href="/createpin"><li>Create</li></a>
-      </ul>
-      <div class="search-bar">
-      <i class="ri-search-line search-icon"></i>
-        <input type="text" placeholder="Search your Pins" id="input">
-      </div>
-      <div class="nav-icons">
-        <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/bell-icon.png" class="icon nav-icon">
-        <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/speech-bubble-black-icon.png" class="icon nav-icon">
-        <img src="https://uxwing.com/wp-content/themes/uxwing/download/arrow-direction/angle-bottom-icon.png" class="icon nav-icon arrow-icon" id="dropdownToggle">
-      </div>
-      
-      <div class="dropdown-content" id="dropdownContent">
-        <a href="/profile">Profile</a>
-        <a href="/">Logout</a>
-      </div>
-      
+        <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/pinterest-round-color-icon.png" class="icon pinterest-icon">
+        <ul class="navigation">
+            <a href="/feed">
+                <li>Home</li>
+            </a>
+            <a href="/feed">
+                <li>Explore</li>
+            </a>
+            <a href="/createpin">
+                <li>Create</li>
+            </a>
+        </ul>
+        <div class="search-bar">
+            <i class="ri-search-line search-icon"></i>
+            <input type="text" placeholder="Search your Pins" id="input">
+        </div>
+        <div class="nav-icons">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/bell-icon.png" class="icon nav-icon">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/communication-chat-call/speech-bubble-black-icon.png" class="icon nav-icon">
+            <img src="https://uxwing.com/wp-content/themes/uxwing/download/arrow-direction/angle-bottom-icon.png" class="icon nav-icon arrow-icon" id="dropdownToggle">
+        </div>
+
+        <div class="dropdown-content" id="dropdownContent">
+            <a href="/profile">Profile</a>
+            <a href="/">Logout</a>
+        </div>
+
     </div>
-   <%}%>
+    <%}%>
 
 
-   <script>
-    // Get the dropdown icon and content
-    const dropdownToggle = document.getElementById('dropdownToggle');
-    const dropdownContent = document.getElementById('dropdownContent');
+    <script>
+        // Get the dropdown icon and content
+        const dropdownToggle = document.getElementById('dropdownToggle');
+        const dropdownContent = document.getElementById('dropdownContent');
 
-    // Toggle the 'show' class when the dropdown icon is clicked
-    dropdownToggle.addEventListener('click', function () {
-        dropdownContent.classList.toggle('show');
-    });
+        // Toggle the 'show' class when the dropdown icon is clicked
+        dropdownToggle.addEventListener('click', function () {
+            dropdownContent.classList.toggle('show');
+        });
 
-    // Close the dropdown when clicking outside of it
-    document.addEventListener('click', function (event) {
-        if (!event.target.matches('.arrow-icon')) {
-            if (dropdownContent.classList.contains('show')) {
-                dropdownContent.classList.remove('show');
+        // Close the dropdown when clicking outside of it
+        document.addEventListener('click', function (event) {
+            if (!event.target.matches('.arrow-icon')) {
+                if (dropdownContent.classList.contains('show')) {
+                    dropdownContent.classList.remove('show');
+                }
             }
-        }
-    });
+        });
+    </script>
+</body>
 
-    function searchPins() {
-        const searchInput = document.getElementById('input').value.toLowerCase();
-        const pins = []; // Replace with your actual pins array
-        const searchResults = pins.filter(pin => pin.title.toLowerCase().includes(searchInput));
-
-        // Now you can use searchResults as needed, e.g., display them on the page
-        displaySearchResults(searchResults);
-    }
-
-    function displaySearchResults(results) {
-        // Implement how you want to display the search results, e.g., update the UI
-        console.log(results);
-    }
-
-
-</script>
+</html>

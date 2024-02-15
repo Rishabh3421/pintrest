@@ -46,7 +46,6 @@ router.post('/uploads', isLoggedIn, upload.single('image'), async function(req, 
   }
 });
 
-
 // Display login form
 router.get('/', function(req, res) {
   res.render('index', { messages: req.flash('error'), nav:false });

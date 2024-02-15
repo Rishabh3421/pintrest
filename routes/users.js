@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 const plm = require("passport-local-mongoose");
+require("dotenv").config();
 
-mongoose.connect("mongodb://localhost:27017/Pintrest");
+console.log(process.env.MONGODB_URL)
+
+mongoose.connect(process.env.MONGODB_URL)
+.then(() => console.log('MongoDB connected successfully'))
+.catch(error => console.error('MongoDB connection error:', error));
 
 const userSchema = mongoose.Schema({
   username: {
@@ -38,5 +43,6 @@ const userSchema = mongoose.Schema({
     }
   ]
 });
+
 userSchema.plugin(plm);
 module.exports = mongoose.model("user", userSchema);

@@ -119,24 +119,54 @@
 </div>
 
 <form action="/createpost" method="post" enctype="multipart/form-data" class="form">
-    <div class="left-form">
-      <div class="drag-drop-container" onclick="document.getElementById('fileInput').click()">
-        <i class="ri-arrow-up-circle-fill text-4xl"></i>
-        <div class="drag-drop-message">Choose a file or drag and drop<br>it here</div>
-      </div>      
+  <div class="left-form">
+      <div class="drag-drop-container imageForm" onclick="document.getElementById('fileInput').click()">
+          <i id="decsIcon" class="decs ri-arrow-up-circle-fill text-4xl"></i>
+          <div id="decsMessage" class="decs drag-drop-message">Choose a file or drag and drop<br>it here</div>
+          <img id="imagePreview" class="image-preview hidden" src="#" alt="Image Preview">
+        </div>
         <input type="file" name="postImage" id="fileInput" class="imagePost" onchange="displayImagePreview(this)">
-        <div id="imagePreview" class="image-preview"></div>
-      </div>
-      
-      
+  </div>
+    
   <div class="right-form">
-    <label for="title">Title</label>
-    <input type="text" placeholder="Add a Title" name="title" id="input-title">
-    <label for="description">Description</label>
-    <textarea type="text" placeholder="Add a detailed Description" style="resize: none;" name="description" id="description"></textarea>
-    <input class="block px-3 py-2 rounded-full mt-5 m-2 bg-red-500 text-white" type="submit" value="Publish">
-</div>
+      <label for="title">Title</label>
+      <input type="text" placeholder="Add a Title" name="title" id="input-title">
+      <label for="description">Description</label>
+      <textarea type="text" placeholder="Add a detailed Description" style="resize: none;" name="description" id="description"></textarea>
+      <input class="block px-3 py-2 rounded-full mt-5 m-2 bg-red-500 text-white" type="submit" value="Publish">
+  </div>
 </form>
+
+<script>
+  function displayImagePreview(input) {
+      const preview = document.getElementById('imagePreview');
+      const decsIcon = document.getElementById('decsIcon');
+      const decsMessage = document.getElementById('decsMessage');
+      const desc = document.querySelector('.desc'); // Selecting the element by class name
+      const file = input.files[0];
+
+      if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+              preview.src = e.target.result;
+              preview.style.display = 'block';
+              preview.style.height = '20vh';
+              decsIcon.style.display = 'none'; // Hide the decs icon
+              decsMessage.style.display = 'none'; // Hide the decs message
+              desc.style.display = 'none'; // Hide the description
+          };
+          reader.readAsDataURL(file);
+      } else {
+          preview.src = '#';
+          preview.style.display = 'none';
+          decsIcon.style.display = 'block'; // Show the decs icon
+          decsMessage.style.display = 'block'; // Show the decs message
+          desc.style.display = 'block'; // Show the description
+      }
+  }
+</script>
+
+
 
 
 
